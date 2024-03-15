@@ -40,8 +40,13 @@ RUN \
   rm -rf \
     /tmp/* \
     /var/lib/apt/lists/* \
-    /var/tmp/*
-
+    /var/tmp/* && \
+    echo "**** install chatgpt cli ****" && \
+    curl -L -o chatgpt https://github.com/kardolus/chatgpt-cli/releases/download/v1.4.2/chatgpt-linux-amd64 && \
+    chmod +x chatgpt &&  \ 
+    sudo mv chatgpt /usr/local/bin/ && \
+    mkdir -p ~/.chatgpt-cli
+  
 # add local files
 COPY /root /
 
